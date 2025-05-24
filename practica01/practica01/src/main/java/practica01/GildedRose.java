@@ -1,4 +1,4 @@
-package com.gildedrose;
+package practica01;
 
 class GildedRose {
     Item[] items;
