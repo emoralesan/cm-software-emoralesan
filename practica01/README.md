@@ -1,25 +1,27 @@
-Práctica No. 1 - Refactorización con Principios de Construcción que forma parte del Proyecto de Construcción
+# Práctica No. 1 - Refactorización con Principios de Construcción que forma parte del Proyecto de Construcción
 
-A) Explicación de lo que hacen las clases GildedRose e Item
+## A) Explicación de lo que hacen las clases GildedRose e Item
 
-Clase Item
+### Clase Item
+
 La clase Item representa un objeto que tiene tres atributos principales:
-• name: el nombre del artículo.
-• sellIn: los días que quedan para vender el artículo.
-• quality: la calidad actual del artículo.
+* name: el nombre del artículo.
+* sellIn: los días que quedan para vender el artículo.
+* quality: la calidad actual del artículo.
 Esta clase tiene un constructor para inicializar estos atributos y un método toString() para representar el artículo como una cadena de texto con sus tres propiedades separadas por comas. La clase básicamente modela un artículo o ítem que puede ser gestionado en la tienda.
 
-Clase GildedRose
+### Clase GildedRose
+
 La clase GildedRose administra un conjunto de objetos tipo Item. Contiene:
-• Un arreglo de objetos Item[] items.
-• Un método llamado updateQuality() que actualiza diariamente el atributo quality y sellIn de cada artículo según reglas específicas.
+* Un arreglo de objetos Item[] items.
+* Un método llamado updateQuality() que actualiza diariamente el atributo quality y sellIn de cada artículo según reglas específicas.
 El método updateQuality() se encarga de modificar la calidad y el tiempo restante para vender el ítem, aplicando diferentes condiciones según el tipo de artículo
 
-B) Malas prácticas encontradas
+## B) Malas prácticas encontradas
 
 A continuación, se detallan malas prácticas encontradas en las clases Item y GildedRose, con base en los principios de Modularidad, Separación de responsabilidades, DRY, KISS, cohesión, desacoplamiento, legibilidad, mantenibilidad, reutilización de componentes y SOLID, según lo visto en clase:
 
-Clase Item
+### Clase Item
 
 1. Violación del principio de encapsulamiento (SOLID - SRP y encapsulación):
 Los atributos name, sellIn y quality son públicos, lo que rompe el encapsulamiento. Esto expone directamente el estado interno del objeto y dificulta controlar las modificaciones y validaciones necesarias.
@@ -30,7 +32,7 @@ La clase solo tiene un constructor y un método toString(), no encapsula la lóg
 3. Baja cohesión:
 Aunque la clase representa un ítem, no maneja comportamientos relacionados (como actualizar su calidad o días para venta), por lo que su funcionalidad es muy limitada y delega todas las responsabilidades a otras clases, pero sin un mecanismo adecuado para mantener bajo acoplamiento.
 
-Clase GildedRose
+### Clase GildedRose
 
 1. Complejidad y anidamiento elevado (KISS):
 El método updateQuality() tiene demasiados niveles de anidación, condicionales complejas y repeticiones, dificultando la legibilidad y comprensión. Se rompe el principio KISS (Keep It Simple, Stupid). Debería ser más simple y modular.
@@ -54,7 +56,8 @@ No se utilizan interfaces o patrones para abstraer la lógica específica de cad
 El código es difícil de seguir y mantener debido a la complejidad y falta de estructuras claras. No hay documentación ni comentarios que expliquen las reglas del negocio ni la intención del código.
 
 
-C) Refactorización
+## C) Refactorización
+
 Para adaptar las clases Item y GildedRose y aplicar principios de calidad de código (Modularidad, Responsabilidad única (SRP), DRY, KISS, cohesión, desacoplamiento, legibilidad, mantenibilidad, reutilización y SOLID), así como aplicar explícitamente el patrón de comportamiento Strategy (según lo visto en clase), se propone:
 
 1. Modularidad y Separación de Responsabilidades (SRP)
